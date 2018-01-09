@@ -12,10 +12,11 @@ import (
 func readPassword(prompt string) (passwd string, err error) {
 	fmt.Fprint(os.Stdout, prompt)
 	buf, err := terminal.ReadPassword(int(syscall.Stdin))
+	fmt.Fprint(os.Stdout, "\n")
 	if err != nil {
 		return "", err
 	}
 
-	passwd := strings.TrimSpace(string(buf))
+	passwd = strings.TrimSpace(string(buf))
 	return
 }
